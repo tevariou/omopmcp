@@ -1,0 +1,20 @@
+services:
+  clickhouse:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: omop_clickhouse
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+      - ./clickhouse-init.xml:/etc/clickhouse-server/config.d/init.xml
+    environment:
+      - CLICKHOUSE_DB=omop
+      - CLICKHOUSE_USER=default
+      - CLICKHOUSE_PASSWORD=default
+
+volumes:
+  clickhouse_data:
+    driver: local
