@@ -17,12 +17,31 @@ The pipeline facilitates the migration of OMOP-formatted CSV files from the `./o
 ## Part II: OMOP MCP Server
 
 The server provides the following core functionality:
-- Patient data extraction for specified time periods by ID
 - OMOP CDM query interface
-- Data source reference tracking
 
 ## Getting Started
-[Installation and setup instructions to be added]
+Create a virtual venv and install the dependencies 
+```
+cd <project_path>
+uv sync
+```
+Launch the database with automatic data ingestion
+```
+docker compose up --build
+```
+Example configuration for Claude Desktop
+```
+{
+  "mcpServers": {
+    "Omop": {
+      "command": "/Users/<me>/omopmcp/.venv/bin/python",
+      "args": [
+        "/Users/<me>/omopmcp/server.py"
+      ]
+    }
+  }
+}
+```
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
