@@ -7,7 +7,7 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.person (
-                    person_id Int64,
+                    person_id UInt64,
                     gender_concept_id UInt32,
                     year_of_birth UInt16,
                     month_of_birth UInt8,
@@ -15,9 +15,9 @@
                     birth_datetime DateTime64,
                     race_concept_id UInt32,
                     ethnicity_concept_id UInt32,
-                    location_id Int64,
-                    provider_id Int64,
-                    care_site_id Int64,
+                    location_id UInt64,
+                    provider_id UInt64,
+                    care_site_id UInt64,
                     person_source_value String,
                     gender_source_value String,
                     gender_source_concept_id UInt32,
@@ -33,23 +33,23 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.visit_occurrence (
-                    visit_occurrence_id Int64,
-                    person_id Int64,
+                    visit_occurrence_id UInt64,
+                    person_id UInt64,
                     visit_concept_id UInt32,
                     visit_start_date Date32,
                     visit_start_datetime DateTime64,
                     visit_end_date Date32,
                     visit_end_datetime DateTime64,
                     visit_type_concept_id UInt32,
-                    provider_id Int64,
-                    care_site_id Int64,
+                    provider_id UInt64,
+                    care_site_id UInt64,
                     visit_source_value String,
                     visit_source_concept_id UInt32,
                     admitted_from_concept_id UInt32,
                     admitted_from_source_value String,
                     discharged_to_concept_id UInt32,
                     discharged_to_source_value String,
-                    preceding_visit_occurrence_id Int64
+                    preceding_visit_occurrence_id UInt64
                 ) ENGINE = MergeTree()
                 PRIMARY KEY (visit_occurrence_id)
                 ORDER BY (visit_occurrence_id)
@@ -58,8 +58,8 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.condition_occurrence (
-                    condition_occurrence_id Int64,
-                    person_id Int64,
+                    condition_occurrence_id UInt64,
+                    person_id UInt64,
                     condition_concept_id UInt32,
                     condition_start_date Date32,
                     condition_start_datetime DateTime64,
@@ -68,9 +68,9 @@
                     condition_type_concept_id UInt32,
                     condition_status_concept_id UInt32,
                     stop_reason String,
-                    provider_id Int64,
-                    visit_occurrence_id Int64,
-                    visit_detail_id Int64,
+                    provider_id UInt64,
+                    visit_occurrence_id UInt64,
+                    visit_detail_id UInt64,
                     condition_source_value String,
                     condition_source_concept_id UInt32,
                     condition_status_source_value String
@@ -82,8 +82,8 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.drug_exposure (
-                    drug_exposure_id Int64,
-                    person_id Int64,
+                    drug_exposure_id UInt64,
+                    person_id UInt64,
                     drug_concept_id UInt32,
                     drug_exposure_start_date Date32,
                     drug_exposure_start_datetime DateTime64,
@@ -98,9 +98,9 @@
                     sig String,
                     route_concept_id UInt32,
                     lot_number String,
-                    provider_id Int64,
-                    visit_occurrence_id Int64,
-                    visit_detail_id Int64,
+                    provider_id UInt64,
+                    visit_occurrence_id UInt64,
+                    visit_detail_id UInt64,
                     drug_source_value String,
                     drug_source_concept_id UInt32,
                     route_source_value String,
@@ -114,8 +114,8 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.measurement (
-                    measurement_id Int64,
-                    person_id Int64,
+                    measurement_id UInt64,
+                    person_id UInt64,
                     measurement_concept_id UInt32,
                     measurement_date Date32,
                     measurement_datetime DateTime64,
@@ -127,9 +127,9 @@
                     unit_concept_id UInt32,
                     range_low Float64,
                     range_high Float64,
-                    provider_id Int64,
-                    visit_occurrence_id Int64,
-                    visit_detail_id Int64,
+                    provider_id UInt64,
+                    visit_occurrence_id UInt64,
+                    visit_detail_id UInt64,
                     measurement_source_value String,
                     measurement_source_concept_id UInt32,
                     unit_source_value String,
@@ -142,8 +142,8 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.observation (
-                    observation_id Int64,
-                    person_id Int64,
+                    observation_id UInt64,
+                    person_id UInt64,
                     observation_concept_id UInt32,
                     observation_date Date32,
                     observation_datetime DateTime64,
@@ -153,9 +153,9 @@
                     value_as_concept_id UInt32,
                     qualifier_concept_id UInt32,
                     unit_concept_id UInt32,
-                    provider_id Int64,
-                    visit_occurrence_id Int64,
-                    visit_detail_id Int64,
+                    provider_id UInt64,
+                    visit_occurrence_id UInt64,
+                    visit_detail_id UInt64,
                     observation_source_value String,
                     observation_source_concept_id UInt32,
                     unit_source_value String,
@@ -168,17 +168,17 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.procedure_occurrence (
-                    procedure_occurrence_id Int64,
-                    person_id Int64,
+                    procedure_occurrence_id UInt64,
+                    person_id UInt64,
                     procedure_concept_id UInt32,
                     procedure_date Date32,
                     procedure_datetime DateTime64,
                     procedure_type_concept_id UInt32,
                     modifier_concept_id UInt32,
                     quantity UInt32,
-                    provider_id Int64,
-                    visit_occurrence_id Int64,
-                    visit_detail_id Int64,
+                    provider_id UInt64,
+                    visit_occurrence_id UInt64,
+                    visit_detail_id UInt64,
                     procedure_source_value String,
                     procedure_source_concept_id UInt32,
                     modifier_source_value String
@@ -190,8 +190,8 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.device_exposure (
-                    device_exposure_id Int64,
-                    person_id Int64,
+                    device_exposure_id UInt64,
+                    person_id UInt64,
                     device_concept_id UInt32,
                     device_exposure_start_date Date32,
                     device_exposure_start_datetime DateTime64,
@@ -200,9 +200,9 @@
                     device_type_concept_id UInt32,
                     unique_device_id String,
                     quantity UInt32,
-                    provider_id Int64,
-                    visit_occurrence_id Int64,
-                    visit_detail_id Int64,
+                    provider_id UInt64,
+                    visit_occurrence_id UInt64,
+                    visit_detail_id UInt64,
                     device_source_value String,
                     device_source_concept_id UInt32
                 ) ENGINE = MergeTree()
@@ -213,7 +213,7 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.death (
-                    person_id Int64,
+                    person_id UInt64,
                     death_date Date32,
                     death_datetime DateTime64,
                     death_type_concept_id UInt32,
@@ -228,8 +228,8 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.note (
-                    note_id Int64,
-                    person_id Int64,
+                    note_id UInt64,
+                    person_id UInt64,
                     note_date Date32,
                     note_datetime DateTime64,
                     note_type_concept_id UInt32,
@@ -238,9 +238,9 @@
                     note_text String,
                     encoding_concept_id UInt32,
                     language_concept_id UInt32,
-                    provider_id Int64,
-                    visit_occurrence_id Int64,
-                    visit_detail_id Int64,
+                    provider_id UInt64,
+                    visit_occurrence_id UInt64,
+                    visit_detail_id UInt64,
                     note_source_value String
                 ) ENGINE = MergeTree()
                 PRIMARY KEY (note_id)
@@ -250,8 +250,8 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.note_nlp (
-                    note_nlp_id Int64,
-                    note_id Int64,
+                    note_nlp_id UInt64,
+                    note_id UInt64,
                     section_concept_id UInt32,
                     snippet String,
                     offset String,
@@ -272,8 +272,8 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.observation_period (
-                    observation_period_id Int64,
-                    person_id Int64,
+                    observation_period_id UInt64,
+                    person_id UInt64,
                     observation_period_start_date Date32,
                     observation_period_end_date Date32,
                     period_type_concept_id UInt32
@@ -285,8 +285,8 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.specimen (
-                    specimen_id Int64,
-                    person_id Int64,
+                    specimen_id UInt64,
+                    person_id UInt64,
                     specimen_concept_id UInt32,
                     specimen_type_concept_id UInt32,
                     specimen_date Date32,
@@ -308,25 +308,25 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.visit_detail (
-                    visit_detail_id Int64,
-                    person_id Int64,
+                    visit_detail_id UInt64,
+                    person_id UInt64,
                     visit_detail_concept_id UInt32,
                     visit_detail_start_date Date32,
                     visit_detail_start_datetime DateTime64,
                     visit_detail_end_date Date32,
                     visit_detail_end_datetime DateTime64,
                     visit_detail_type_concept_id UInt32,
-                    provider_id Int64,
-                    care_site_id Int64,
+                    provider_id UInt64,
+                    care_site_id UInt64,
                     visit_detail_source_value String,
                     visit_detail_source_concept_id UInt32,
                     admitted_from_concept_id UInt32,
                     admitted_from_source_value String,
                     discharged_to_source_value String,
                     discharged_to_concept_id UInt32,
-                    preceding_visit_detail_id Int64,
-                    visit_detail_parent_id Int64,
-                    visit_occurrence_id Int64
+                    preceding_visit_detail_id UInt64,
+                    visit_detail_parent_id UInt64,
+                    visit_occurrence_id UInt64
                 ) ENGINE = MergeTree()
                 PRIMARY KEY (visit_detail_id)
                 ORDER BY (visit_detail_id)
@@ -335,9 +335,9 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.cost (
-                    cost_id Int64,
-                    person_id Int64,
-                    cost_event_id Int64,
+                    cost_id UInt64,
+                    person_id UInt64,
+                    cost_event_id UInt64,
                     cost_domain_id String,
                     cost_type_concept_id UInt32,
                     currency_concept_id UInt32,
@@ -366,8 +366,8 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.drug_era (
-                    drug_era_id Int64,
-                    person_id Int64,
+                    drug_era_id UInt64,
+                    person_id UInt64,
                     drug_concept_id UInt32,
                     drug_era_start_date Date32,
                     drug_era_end_date Date32,
@@ -381,8 +381,8 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.dose_era (
-                    dose_era_id Int64,
-                    person_id Int64,
+                    dose_era_id UInt64,
+                    person_id UInt64,
                     drug_concept_id UInt32,
                     unit_concept_id UInt32,
                     dose_value Float64,
@@ -396,8 +396,8 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.condition_era (
-                    condition_era_id Int64,
-                    person_id Int64,
+                    condition_era_id UInt64,
+                    person_id UInt64,
                     condition_concept_id UInt32,
                     condition_era_start_date Date32,
                     condition_era_end_date Date32,
@@ -410,7 +410,7 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.location (
-                    location_id Int64,
+                    location_id UInt64,
                     address_1 String,
                     address_2 String,
                     city String,
@@ -430,10 +430,10 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.care_site (
-                    care_site_id Int64,
+                    care_site_id UInt64,
                     care_site_name String,
                     place_of_service_concept_id UInt32,
-                    location_id Int64,
+                    location_id UInt64,
                     care_site_source_value String,
                     place_of_service_source_value String
                 ) ENGINE = MergeTree()
@@ -444,12 +444,12 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.provider (
-                    provider_id Int64,
+                    provider_id UInt64,
                     provider_name String,
                     npi String,
                     dea String,
                     specialty_concept_id UInt32,
-                    care_site_id Int64,
+                    care_site_id UInt64,
                     year_of_birth UInt16,
                     gender_concept_id UInt32,
                     provider_source_value String,
@@ -465,8 +465,8 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.payer_plan_period (
-                    payer_plan_period_id Int64,
-                    person_id Int64,
+                    payer_plan_period_id UInt64,
+                    person_id UInt64,
                     payer_plan_period_start_date Date32,
                     payer_plan_period_end_date Date32,
                     payer_concept_id UInt32,
@@ -508,7 +508,7 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.concept (
-                    concept_id Int32,
+                    concept_id UInt32,
                     concept_name String,
                     domain_id String,
                     vocabulary_id String,
@@ -526,8 +526,8 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.concept_relationship (
-                    concept_id_1 Int32,
-                    concept_id_2 Int32,
+                    concept_id_1 UInt32,
+                    concept_id_2 UInt32,
                     relationship_id String,
                     valid_start_date Date32,
                     valid_end_date Date32,
@@ -540,8 +540,8 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.concept_ancestor (
-                    ancestor_concept_id Int32,
-                    descendant_concept_id Int32,
+                    ancestor_concept_id UInt32,
+                    descendant_concept_id UInt32,
                     min_levels_of_separation UInt32,
                     max_levels_of_separation UInt32
                 ) ENGINE = MergeTree()
@@ -566,7 +566,7 @@
             <query>
                 CREATE TABLE IF NOT EXISTS omop.cohort (
                     cohort_definition_id Int32,
-                    subject_id Int64,
+                    subject_id UInt64,
                     cohort_start_date Date32,
                     cohort_end_date Date32
                 ) ENGINE = MergeTree()
@@ -593,7 +593,7 @@
             <query>
                 CREATE TABLE IF NOT EXISTS omop.cohort_attribute (
                     cohort_definition_id Int32,
-                    subject_id Int64,
+                    subject_id UInt64,
                     cohort_start_date Date32,
                     cohort_end_date Date32,
                     attribute_definition_id Int32,
@@ -621,9 +621,9 @@
             <query>
                 CREATE TABLE IF NOT EXISTS omop.fact_relationship (
                     domain_concept_id_1 Int32,
-                    fact_id_1 Int64,
+                    fact_id_1 UInt64,
                     domain_concept_id_2 Int32,
-                    fact_id_2 Int64,
+                    fact_id_2 UInt64,
                     relationship_concept_id UInt32
                 ) ENGINE = MergeTree()
                 PRIMARY KEY (domain_concept_id_1, fact_id_1, domain_concept_id_2, fact_id_2)
@@ -633,7 +633,7 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.metadata (
-                    metadata_concept_id Int32,
+                    metadata_concept_id UInt32,
                     metadata_type_concept_id UInt32,
                     name String,
                     value_as_string String,
@@ -662,8 +662,8 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.drug_strength (
-                    drug_concept_id Int32,
-                    ingredient_concept_id Int32,
+                    drug_concept_id UInt32,
+                    ingredient_concept_id UInt32,
                     amount_value Float64,
                     amount_unit_concept_id UInt32,
                     numerator_value Float64,
@@ -704,7 +704,7 @@
         <scripts>
             <query>
                 CREATE TABLE IF NOT EXISTS omop.concept_synonym (
-                    concept_id Int32,
+                    concept_id UInt32,
                     concept_synonym_name String,
                     language_concept_id UInt32
                 ) ENGINE = MergeTree()
@@ -715,91 +715,91 @@
 
         <!-- Data loading scripts -->
         <scripts>
-            <query>INSERT INTO omop.person SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/person.csv.gz', 'CSVWithNames', 'person_id Int64, gender_concept_id UInt32, year_of_birth UInt16, month_of_birth UInt8, day_of_birth UInt8, birth_datetime DateTime64, race_concept_id UInt32, ethnicity_concept_id UInt32, location_id UInt64, provider_id UInt64, care_site_id UInt64, person_source_value String, gender_source_value String, gender_source_concept_id UInt32, race_source_value String, race_source_concept_id UInt32, ethnicity_source_value String, ethnicity_source_concept_id UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.person SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/person.csv.gz', 'CSVWithNames', 'person_id UInt64, gender_concept_id UInt32, year_of_birth UInt16, month_of_birth UInt8, day_of_birth UInt8, birth_datetime DateTime64, race_concept_id UInt32, ethnicity_concept_id UInt32, location_id UInt64, provider_id UInt64, care_site_id UInt64, person_source_value String, gender_source_value String, gender_source_concept_id UInt32, race_source_value String, race_source_concept_id UInt32, ethnicity_source_value String, ethnicity_source_concept_id UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.person LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.visit_occurrence SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/visit_occurrence.csv.gz', 'CSVWithNames', 'visit_occurrence_id Int64, person_id Int64, visit_concept_id UInt32, visit_start_date Date32, visit_start_datetime DateTime64, visit_end_date Date32, visit_end_datetime DateTime64, visit_type_concept_id UInt32, provider_id Int64, care_site_id Int64, visit_source_value String, visit_source_concept_id UInt32, admitted_from_concept_id UInt32, admitted_from_source_value String, discharged_to_concept_id UInt32, discharged_to_source_value String, preceding_visit_occurrence_id Int64', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.visit_occurrence SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/visit_occurrence.csv.gz', 'CSVWithNames', 'visit_occurrence_id UInt64, person_id UInt64, visit_concept_id UInt32, visit_start_date Date32, visit_start_datetime DateTime64, visit_end_date Date32, visit_end_datetime DateTime64, visit_type_concept_id UInt32, provider_id UInt64, care_site_id UInt64, visit_source_value String, visit_source_concept_id UInt32, admitted_from_concept_id UInt32, admitted_from_source_value String, discharged_to_concept_id UInt32, discharged_to_source_value String, preceding_visit_occurrence_id UInt64', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.visit_occurrence LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.condition_occurrence SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/condition_occurrence.csv.gz', 'CSVWithNames', 'condition_occurrence_id Int64, person_id Int64, condition_concept_id UInt32, condition_start_date Date32, condition_start_datetime DateTime64, condition_end_date Date32, condition_end_datetime DateTime64, condition_type_concept_id UInt32, condition_status_concept_id UInt32, stop_reason String, provider_id Int64, visit_occurrence_id Int64, visit_detail_id Int64, condition_source_value String, condition_source_concept_id UInt32, condition_status_source_value String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.condition_occurrence SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/condition_occurrence.csv.gz', 'CSVWithNames', 'condition_occurrence_id UInt64, person_id UInt64, condition_concept_id UInt32, condition_start_date Date32, condition_start_datetime DateTime64, condition_end_date Date32, condition_end_datetime DateTime64, condition_type_concept_id UInt32, condition_status_concept_id UInt32, stop_reason String, provider_id UInt64, visit_occurrence_id UInt64, visit_detail_id UInt64, condition_source_value String, condition_source_concept_id UInt32, condition_status_source_value String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.condition_occurrence LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.drug_exposure SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/drug_exposure.csv.gz', 'CSVWithNames', 'drug_exposure_id Int64, person_id Int64, drug_concept_id UInt32, drug_exposure_start_date Date32, drug_exposure_start_datetime DateTime64, drug_exposure_end_date Date32, drug_exposure_end_datetime DateTime64, verbatim_end_date Date32, drug_type_concept_id UInt32, stop_reason String, refills UInt32, quantity Float64, days_supply UInt32, sig String, route_concept_id UInt32, lot_number String, provider_id Int64, visit_occurrence_id Int64, visit_detail_id Int64, drug_source_value String, drug_source_concept_id UInt32, route_source_value String, dose_unit_source_value String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.drug_exposure SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/drug_exposure.csv.gz', 'CSVWithNames', 'drug_exposure_id UInt64, person_id UInt64, drug_concept_id UInt32, drug_exposure_start_date Date32, drug_exposure_start_datetime DateTime64, drug_exposure_end_date Date32, drug_exposure_end_datetime DateTime64, verbatim_end_date Date32, drug_type_concept_id UInt32, stop_reason String, refills UInt32, quantity Float64, days_supply UInt32, sig String, route_concept_id UInt32, lot_number String, provider_id UInt64, visit_occurrence_id UInt64, visit_detail_id UInt64, drug_source_value String, drug_source_concept_id UInt32, route_source_value String, dose_unit_source_value String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.drug_exposure LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.measurement SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/measurement.csv.gz', 'CSVWithNames', 'measurement_id Int64, person_id Int64, measurement_concept_id UInt32, measurement_date Date32, measurement_datetime DateTime64, measurement_time String, measurement_type_concept_id UInt32, operator_concept_id UInt32, value_as_number Float64, value_as_concept_id UInt32, unit_concept_id UInt32, range_low Float64, range_high Float64, provider_id Int64, visit_occurrence_id Int64, visit_detail_id Int64, measurement_source_value String, measurement_source_concept_id UInt32, unit_source_value String, value_source_value String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.measurement SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/measurement.csv.gz', 'CSVWithNames', 'measurement_id UInt64, person_id UInt64, measurement_concept_id UInt32, measurement_date Date32, measurement_datetime DateTime64, measurement_time String, measurement_type_concept_id UInt32, operator_concept_id UInt32, value_as_number Float64, value_as_concept_id UInt32, unit_concept_id UInt32, range_low Float64, range_high Float64, provider_id UInt64, visit_occurrence_id UInt64, visit_detail_id UInt64, measurement_source_value String, measurement_source_concept_id UInt32, unit_source_value String, value_source_value String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.measurement LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.observation SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/observation.csv.gz', 'CSVWithNames', 'observation_id Int64, person_id Int64, observation_concept_id UInt32, observation_date Date32, observation_datetime DateTime64, observation_type_concept_id UInt32, value_as_number Float64, value_as_string String, value_as_concept_id UInt32, qualifier_concept_id UInt32, unit_concept_id UInt32, provider_id Int64, visit_occurrence_id Int64, visit_detail_id Int64, observation_source_value String, observation_source_concept_id UInt32, unit_source_value String, qualifier_source_value String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.observation SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/observation.csv.gz', 'CSVWithNames', 'observation_id UInt64, person_id UInt64, observation_concept_id UInt32, observation_date Date32, observation_datetime DateTime64, observation_type_concept_id UInt32, value_as_number Float64, value_as_string String, value_as_concept_id UInt32, qualifier_concept_id UInt32, unit_concept_id UInt32, provider_id UInt64, visit_occurrence_id UInt64, visit_detail_id UInt64, observation_source_value String, observation_source_concept_id UInt32, unit_source_value String, qualifier_source_value String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.observation LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.procedure_occurrence SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/procedure_occurrence.csv.gz', 'CSVWithNames', 'procedure_occurrence_id Int64, person_id Int64, procedure_concept_id UInt32, procedure_date Date32, procedure_datetime DateTime64, procedure_type_concept_id UInt32, modifier_concept_id UInt32, quantity UInt32, provider_id Int64, visit_occurrence_id Int64, visit_detail_id Int64, procedure_source_value String, procedure_source_concept_id UInt32, modifier_source_value String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.procedure_occurrence SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/procedure_occurrence.csv.gz', 'CSVWithNames', 'procedure_occurrence_id UInt64, person_id UInt64, procedure_concept_id UInt32, procedure_date Date32, procedure_datetime DateTime64, procedure_type_concept_id UInt32, modifier_concept_id UInt32, quantity UInt32, provider_id UInt64, visit_occurrence_id UInt64, visit_detail_id UInt64, procedure_source_value String, procedure_source_concept_id UInt32, modifier_source_value String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.procedure_occurrence LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.device_exposure SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/device_exposure.csv.gz', 'CSVWithNames', 'device_exposure_id Int64, person_id Int64, device_concept_id UInt32, device_exposure_start_date Date32, device_exposure_start_datetime DateTime64, device_exposure_end_date Date32, device_exposure_end_datetime DateTime64, device_type_concept_id UInt32, unique_device_id String, quantity UInt32, provider_id Int64, visit_occurrence_id Int64, visit_detail_id Int64, device_source_value String, device_source_concept_id UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.device_exposure SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/device_exposure.csv.gz', 'CSVWithNames', 'device_exposure_id UInt64, person_id UInt64, device_concept_id UInt32, device_exposure_start_date Date32, device_exposure_start_datetime DateTime64, device_exposure_end_date Date32, device_exposure_end_datetime DateTime64, device_type_concept_id UInt32, unique_device_id String, quantity UInt32, provider_id UInt64, visit_occurrence_id UInt64, visit_detail_id UInt64, device_source_value String, device_source_concept_id UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.device_exposure LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.death SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/death.csv.gz', 'CSVWithNames', 'person_id Int64, death_date Date32, death_datetime DateTime64, death_type_concept_id UInt32, cause_concept_id UInt32, cause_source_value String, cause_source_concept_id UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.death SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/death.csv.gz', 'CSVWithNames', 'person_id UInt64, death_date Date32, death_datetime DateTime64, death_type_concept_id UInt32, cause_concept_id UInt32, cause_source_value String, cause_source_concept_id UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.death LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.note SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/note.csv.gz', 'CSVWithNames', 'note_id Int64, person_id Int64, note_date Date32, note_datetime DateTime64, note_type_concept_id UInt32, note_class_concept_id UInt32, note_title String, note_text String, encoding_concept_id UInt32, language_concept_id UInt32, provider_id Int64, visit_occurrence_id Int64, visit_detail_id Int64, note_source_value String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.note SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/note.csv.gz', 'CSVWithNames', 'note_id UInt64, person_id UInt64, note_date Date32, note_datetime DateTime64, note_type_concept_id UInt32, note_class_concept_id UInt32, note_title String, note_text String, encoding_concept_id UInt32, language_concept_id UInt32, provider_id UInt64, visit_occurrence_id UInt64, visit_detail_id UInt64, note_source_value String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.note LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.note_nlp SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/note_nlp.csv.gz', 'CSVWithNames', 'note_nlp_id Int64, note_id Int64, section_concept_id UInt32, snippet String, offset String, lexical_variant String, note_nlp_concept_id UInt32, note_nlp_source_concept_id UInt32, nlp_system String, nlp_date Date32, nlp_datetime DateTime64, term_exists String, term_temporal String, term_modifiers String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.note_nlp SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/note_nlp.csv.gz', 'CSVWithNames', 'note_nlp_id UInt64, note_id UInt64, section_concept_id UInt32, snippet String, offset String, lexical_variant String, note_nlp_concept_id UInt32, note_nlp_source_concept_id UInt32, nlp_system String, nlp_date Date32, nlp_datetime DateTime64, term_exists String, term_temporal String, term_modifiers String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.note_nlp LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.observation_period SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/observation_period.csv.gz', 'CSVWithNames', 'observation_period_id Int64, person_id Int64, observation_period_start_date Date32, observation_period_end_date Date32, period_type_concept_id UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.observation_period SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/observation_period.csv.gz', 'CSVWithNames', 'observation_period_id UInt64, person_id UInt64, observation_period_start_date Date32, observation_period_end_date Date32, period_type_concept_id UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.observation_period LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.specimen SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/specimen.csv.gz', 'CSVWithNames', 'specimen_id Int64, person_id Int64, specimen_concept_id UInt32, specimen_type_concept_id UInt32, specimen_date Date32, specimen_datetime DateTime64, quantity Float64, unit_concept_id UInt32, anatomic_site_concept_id UInt32, disease_status_concept_id UInt32, specimen_source_id String, specimen_source_value String, unit_source_value String, anatomic_site_source_value String, disease_status_source_value String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.specimen SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/specimen.csv.gz', 'CSVWithNames', 'specimen_id UInt64, person_id UInt64, specimen_concept_id UInt32, specimen_type_concept_id UInt32, specimen_date Date32, specimen_datetime DateTime64, quantity Float64, unit_concept_id UInt32, anatomic_site_concept_id UInt32, disease_status_concept_id UInt32, specimen_source_id String, specimen_source_value String, unit_source_value String, anatomic_site_source_value String, disease_status_source_value String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.specimen LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.visit_detail SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/visit_detail.csv.gz', 'CSVWithNames', 'visit_detail_id Int64, person_id Int64, visit_detail_concept_id UInt32, visit_detail_start_date Date32, visit_detail_start_datetime DateTime64, visit_detail_end_date Date32, visit_detail_end_datetime DateTime64, visit_detail_type_concept_id UInt32, provider_id Int64, care_site_id Int64, visit_detail_source_value String, visit_detail_source_concept_id UInt32, admitted_from_concept_id UInt32, admitted_from_source_value String, discharged_to_source_value String, discharged_to_concept_id UInt32, preceding_visit_detail_id Int64, visit_detail_parent_id Int64, visit_occurrence_id Int64', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.visit_detail SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/visit_detail.csv.gz', 'CSVWithNames', 'visit_detail_id UInt64, person_id UInt64, visit_detail_concept_id UInt32, visit_detail_start_date Date32, visit_detail_start_datetime DateTime64, visit_detail_end_date Date32, visit_detail_end_datetime DateTime64, visit_detail_type_concept_id UInt32, provider_id UInt64, care_site_id UInt64, visit_detail_source_value String, visit_detail_source_concept_id UInt32, admitted_from_concept_id UInt32, admitted_from_source_value String, discharged_to_source_value String, discharged_to_concept_id UInt32, preceding_visit_detail_id UInt64, visit_detail_parent_id UInt64, visit_occurrence_id UInt64', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.visit_detail LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.cost SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/cost.csv.gz', 'CSVWithNames', 'cost_id Int64, person_id Int64, cost_event_id Int64, cost_domain_id String, cost_type_concept_id UInt32, currency_concept_id UInt32, total_charge Float64, total_cost Float64, total_paid Float64, paid_by_payer Float64, paid_by_patient Float64, paid_patient_copay Float64, paid_patient_coinsurance Float64, paid_patient_deductible Float64, paid_by_primary Float64, paid_ingredient_cost Float64, paid_dispensing_fee Float64, payer_plan_period_id Int64, amount_allowed Float64, revenue_code_concept_id UInt32, revenue_code_source_value String, drg_concept_id UInt32, drg_source_value String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.cost SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/cost.csv.gz', 'CSVWithNames', 'cost_id UInt64, person_id UInt64, cost_event_id UInt64, cost_domain_id String, cost_type_concept_id UInt32, currency_concept_id UInt32, total_charge Float64, total_cost Float64, total_paid Float64, paid_by_payer Float64, paid_by_patient Float64, paid_patient_copay Float64, paid_patient_coinsurance Float64, paid_patient_deductible Float64, paid_by_primary Float64, paid_ingredient_cost Float64, paid_dispensing_fee Float64, payer_plan_period_id UInt64, amount_allowed Float64, revenue_code_concept_id UInt32, revenue_code_source_value String, drg_concept_id UInt32, drg_source_value String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.cost LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.drug_era SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/drug_era.csv.gz', 'CSVWithNames', 'drug_era_id Int64, person_id Int64, drug_concept_id UInt32, drug_era_start_date Date32, drug_era_end_date Date32, drug_exposure_count UInt32, gap_days UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.drug_era SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/drug_era.csv.gz', 'CSVWithNames', 'drug_era_id UInt64, person_id UInt64, drug_concept_id UInt32, drug_era_start_date Date32, drug_era_end_date Date32, drug_exposure_count UInt32, gap_days UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.drug_era LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.dose_era SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/dose_era.csv.gz', 'CSVWithNames', 'dose_era_id Int64, person_id Int64, drug_concept_id UInt32, unit_concept_id UInt32, dose_value Float64, dose_era_start_date Date32, dose_era_end_date Date32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.dose_era SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/dose_era.csv.gz', 'CSVWithNames', 'dose_era_id UInt64, person_id UInt64, drug_concept_id UInt32, unit_concept_id UInt32, dose_value Float64, dose_era_start_date Date32, dose_era_end_date Date32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.dose_era LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.condition_era SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/condition_era.csv.gz', 'CSVWithNames', 'condition_era_id Int64, person_id Int64, condition_concept_id UInt32, condition_era_start_date Date32, condition_era_end_date Date32, condition_occurrence_count UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.condition_era SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/condition_era.csv.gz', 'CSVWithNames', 'condition_era_id UInt64, person_id UInt64, condition_concept_id UInt32, condition_era_start_date Date32, condition_era_end_date Date32, condition_occurrence_count UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.condition_era LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.location SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/location.csv.gz', 'CSVWithNames', 'location_id Int64, address_1 String, address_2 String, city String, state String, zip String, county String, location_source_value String, country_concept_id UInt32, country_source_value String, latitude Float64, longitude Float64', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.location SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/location.csv.gz', 'CSVWithNames', 'location_id UInt64, address_1 String, address_2 String, city String, state String, zip String, county String, location_source_value String, country_concept_id UInt32, country_source_value String, latitude Float64, longitude Float64', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.location LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.care_site SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/care_site.csv.gz', 'CSVWithNames', 'care_site_id Int64, care_site_name String, place_of_service_concept_id UInt32, location_id Int64, care_site_source_value String, place_of_service_source_value String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.care_site SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/care_site.csv.gz', 'CSVWithNames', 'care_site_id UInt64, care_site_name String, place_of_service_concept_id UInt32, location_id UInt64, care_site_source_value String, place_of_service_source_value String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.care_site LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.provider SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/provider.csv.gz', 'CSVWithNames', 'provider_id Int64, provider_name String, npi String, dea String, specialty_concept_id UInt32, care_site_id Int64, year_of_birth UInt16, gender_concept_id UInt32, provider_source_value String, specialty_source_value String, specialty_source_concept_id UInt32, gender_source_value String, gender_source_concept_id UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.provider SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/provider.csv.gz', 'CSVWithNames', 'provider_id UInt64, provider_name String, npi String, dea String, specialty_concept_id UInt32, care_site_id UInt64, year_of_birth UInt16, gender_concept_id UInt32, provider_source_value String, specialty_source_value String, specialty_source_concept_id UInt32, gender_source_value String, gender_source_concept_id UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.provider LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.payer_plan_period SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/payer_plan_period.csv.gz', 'CSVWithNames', 'payer_plan_period_id Int64, person_id Int64, payer_plan_period_start_date Date32, payer_plan_period_end_date Date32, payer_concept_id UInt32, payer_source_value String, payer_source_concept_id UInt32, plan_concept_id UInt32, plan_source_value String, plan_source_concept_id UInt32, sponsor_concept_id UInt32, sponsor_source_value String, sponsor_source_concept_id UInt32, family_source_value String, stop_reason_concept_id UInt32, stop_reason_source_value String, stop_reason_source_concept_id UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.payer_plan_period SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/payer_plan_period.csv.gz', 'CSVWithNames', 'payer_plan_period_id UInt64, person_id UInt64, payer_plan_period_start_date Date32, payer_plan_period_end_date Date32, payer_concept_id UInt32, payer_source_value String, payer_source_concept_id UInt32, plan_concept_id UInt32, plan_source_value String, plan_source_concept_id UInt32, sponsor_concept_id UInt32, sponsor_source_value String, sponsor_source_concept_id UInt32, family_source_value String, stop_reason_concept_id UInt32, stop_reason_source_value String, stop_reason_source_concept_id UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.payer_plan_period LIMIT 1)</condition>
         </scripts>
         <scripts>
@@ -807,7 +807,7 @@
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.cdm_source LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.concept SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/concept.csv.gz', 'TabSeparatedWithNames', 'concept_id Int32, concept_name String, domain_id String, vocabulary_id String, concept_class_id String, standard_concept String, concept_code String, valid_start_date Date32, valid_end_date Date32, invalid_reason String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.concept SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/concept.csv.gz', 'TabSeparatedWithNames', 'concept_id UInt32, concept_name String, domain_id String, vocabulary_id String, concept_class_id String, standard_concept String, concept_code String, valid_start_date Date32, valid_end_date Date32, invalid_reason String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.concept LIMIT 1)</condition>
         </scripts>
         <scripts>
@@ -815,7 +815,7 @@
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.concept_relationship LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.concept_ancestor SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/concept_ancestor.csv.gz', 'CSVWithNames', 'ancestor_concept_id Int32, descendant_concept_id Int32, min_levels_of_separation UInt32, max_levels_of_separation UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.concept_ancestor SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/concept_ancestor.csv.gz', 'CSVWithNames', 'ancestor_concept_id UInt32, descendant_concept_id UInt32, min_levels_of_separation UInt32, max_levels_of_separation UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.concept_ancestor LIMIT 1)</condition>
         </scripts>
         <scripts>
@@ -823,7 +823,7 @@
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.vocabulary LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.cohort SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/cohort.csv.gz', 'CSVWithNames', 'cohort_definition_id Int32, subject_id Int64, cohort_start_date Date32, cohort_end_date Date32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.cohort SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/cohort.csv.gz', 'CSVWithNames', 'cohort_definition_id Int32, subject_id UInt64, cohort_start_date Date32, cohort_end_date Date32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.cohort LIMIT 1)</condition>
         </scripts>
         <scripts>
@@ -831,7 +831,7 @@
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.cohort_definition LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.cohort_attribute SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/cohort_attribute.csv.gz', 'CSVWithNames', 'cohort_definition_id Int32, subject_id Int64, cohort_start_date Date32, cohort_end_date Date32, attribute_definition_id Int32, value_as_number Float64, value_as_concept_id UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.cohort_attribute SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/cohort_attribute.csv.gz', 'CSVWithNames', 'cohort_definition_id Int32, subject_id UInt64, cohort_start_date Date32, cohort_end_date Date32, attribute_definition_id Int32, value_as_number Float64, value_as_concept_id UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.cohort_attribute LIMIT 1)</condition>
         </scripts>
         <scripts>
@@ -839,11 +839,11 @@
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.attribute_definition LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.fact_relationship SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/fact_relationship.csv.gz', 'CSVWithNames', 'domain_concept_id_1 Int32, fact_id_1 Int64, domain_concept_id_2 Int32, fact_id_2 Int64, relationship_concept_id UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.fact_relationship SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/fact_relationship.csv.gz', 'CSVWithNames', 'domain_concept_id_1 Int32, fact_id_1 UInt64, domain_concept_id_2 Int32, fact_id_2 UInt64, relationship_concept_id UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.fact_relationship LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.metadata SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/metadata.csv.gz', 'CSVWithNames', 'metadata_concept_id Int32, metadata_type_concept_id UInt32, name String, value_as_string String, value_as_concept_id UInt32, metadata_date Date32, metadata_datetime DateTime64', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.metadata SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/metadata.csv.gz', 'CSVWithNames', 'metadata_concept_id UInt32, metadata_type_concept_id UInt32, name String, value_as_string String, value_as_concept_id UInt32, metadata_date Date32, metadata_datetime DateTime64', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.metadata LIMIT 1)</condition>
         </scripts>
         <scripts>
@@ -851,7 +851,7 @@
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.relationship LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.drug_strength SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/drug_strength.csv.gz', 'CSVWithNames', 'drug_concept_id Int32, ingredient_concept_id Int32, amount_value Float64, amount_unit_concept_id UInt32, numerator_value Float64, numerator_unit_concept_id UInt32, denominator_value Float64, denominator_unit_concept_id UInt32, box_size UInt32, valid_start_date Date32, valid_end_date Date32, invalid_reason String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.drug_strength SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/drug_strength.csv.gz', 'CSVWithNames', 'drug_concept_id UInt32, ingredient_concept_id UInt32, amount_value Float64, amount_unit_concept_id UInt32, numerator_value Float64, numerator_unit_concept_id UInt32, denominator_value Float64, denominator_unit_concept_id UInt32, box_size UInt32, valid_start_date Date32, valid_end_date Date32, invalid_reason String', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.drug_strength LIMIT 1)</condition>
         </scripts>
         <scripts>
@@ -863,7 +863,7 @@
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.concept_class LIMIT 1)</condition>
         </scripts>
         <scripts>
-            <query>INSERT INTO omop.concept_synonym SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/concept_synonym.csv.gz', 'TabSeparatedWithNames', 'concept_id Int32, concept_synonym_name String, language_concept_id UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
+            <query>INSERT INTO omop.concept_synonym SELECT * FROM file('/var/lib/clickhouse/user_files/omop_data_csv/concept_synonym.csv.gz', 'TabSeparatedWithNames', 'concept_id UInt32, concept_synonym_name String, language_concept_id UInt32', 'gz') SETTINGS async_insert=1, wait_for_async_insert=1</query>
             <condition>SELECT NOT EXISTS(SELECT 1 FROM omop.concept_synonym LIMIT 1)</condition>
         </scripts>
     </startup_scripts>
