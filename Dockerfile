@@ -5,3 +5,4 @@ RUN mkdir -p /var/lib/clickhouse/user_files/omop_data_csv
 
 # Copy OMOP data files with proper permissions
 COPY --chown=clickhouse:clickhouse omop_data_csv/ /var/lib/clickhouse/user_files/omop_data_csv/
+ADD clickhouse-init.xml /etc/clickhouse-server/config.d/init.xml
