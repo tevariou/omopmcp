@@ -1,0 +1,20 @@
+FROM postgres:15
+
+# Install additional tools
+RUN apt-get update && apt-get install -y \
+    postgresql-client \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy the pg_dump file to a different location
+COPY omop_dump.sql.gz /tmp/omop_dump.sql.gz
+
+# Create initialization script to restore from dump
+RUN echo '#!/bin/bash' > /docker-entrypoint-initdb.d/01-restore-dump.sh && \
+    echo 'gunzip -c /tmp/omop_dump.sql.gz | sed "s/DROP DATABASE IF EXISTS omop;//" | psql -U $POSTGRES_USER -d $POSTGRES_DB' >> /docker-entrypoint-initdb.d/01-restore-dump.sh && \
+    chmod +x /docker-entrypoint-initdb.d/01-restore-dump.sh
+
+# Copy custom PostgreSQL configuration
+COPY postgresql.conf /etc/postgresql/postgresql.conf
+
+# Set the command to use our custom config
+CMD ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"] 
